@@ -4,6 +4,22 @@ html {
   scroll-behavior: smooth;
 }
 
+html.dark-mode, html {
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+
+/* Smooth transitions for theme switching */
+* {
+  transition: 
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    text-shadow 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
 /*** Body Styling ***/
 body {
   background: linear-gradient(to bottom, #e0f7fa, #e1bee7);
@@ -165,4 +181,222 @@ a:active { color: orange; }
   --accent-color-medium: #684fb5;
   --accent-color-dark: #482f95;
   --accent-color-darkest: #231942;
+}
+
+/* 🌙 DARK MODE OVERRIDES */
+.dark-mode html,
+.dark-mode body {
+  background: linear-gradient(to bottom, #121212, #1c1c1c);
+  color: #f5f5f5;
+}
+
+/* Navbar */
+.dark-mode .navbar {
+  background: #1e1e2f;
+}
+
+.dark-mode .navbar a {
+  color: #cfd8dc;
+}
+
+.dark-mode .navbar a:hover {
+  background: #cfd8dc;
+  color: #1e1e2f;
+}
+
+/* Header */
+.dark-mode .header-container {
+  background: linear-gradient(to right, #2e2a4a, #4a3f6b);
+  color: #f5f5f5;
+}
+
+/* Buttons */
+.dark-mode button,
+.dark-mode .header-button {
+  background-color: #333;
+  color: #f5f5f5;
+  border: 1px solid #555;
+}
+
+.dark-mode button:hover,
+.dark-mode .header-button:hover {
+  background: #555;
+  color: white;
+}
+
+/* Footer */
+.dark-mode .footer {
+  background: #1e1e2f;
+  color: #cfd8dc;
+}
+
+.dark-mode .footer a {
+  color: #9bbcf9;
+}
+
+.dark-mode .footer a:hover {
+  color: white;
+}
+
+/* Headings (already partly defined, but more control) */
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+  background: linear-gradient(45deg, #b0c4ff, #9bbcf9, #c2aff0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Links */
+.dark-mode a:link { color: #9bbcf9; }
+.dark-mode a:visited { color: #7a7de2; }
+.dark-mode a:hover { color: #c2aff0; }
+.dark-mode a:active { color: #e5baff; }
+
+/* Cute glow animation when dark mode toggles */
+@keyframes themeGlow {
+  0% {
+    box-shadow: 0 0 0px rgba(176, 196, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(176, 196, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(176, 196, 255, 0);
+  }
+}
+
+/* Apply glow to the button when switching */
+.glow {
+  animation: themeGlow 0.8s ease;
+}
+
+/* === Fancy Theme Button === */
+#theme-button {
+  background-color: #f0f0f0;
+  color: royalblue; /* more vivid blue */
+  border: 4px solid royalblue; /* thicker border */
+  border-radius: 12px;
+  font-family: "Papyrus", "Comic Sans MS", "Pacifico", cursive; /* whimsical vibe */
+  font-size: 1.1em;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(65, 105, 225, 0.2); /* soft glow */
+}
+
+#theme-button:hover {
+  background-color: royalblue;
+  color: white;
+  border-width: 6px; /* get thicker on hover for emphasis */
+  box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
+}
+
+.dark-mode #theme-button {
+  background-color: #1a1a2e;
+  color: #b0c4ff;
+  border: 4px solid #b0c4ff;
+  font-family: "Pacifico", cursive;
+  box-shadow: 0 0 10px rgba(176, 196, 255, 0.4);
+}
+
+.dark-mode #theme-button:hover {
+  background-color: #2e2a4a;
+  border-width: 6px;
+  color: white;
+}
+
+.glow {
+  animation: themeGlow 0.8s ease;
+  border-color: #b0c4ff;
+  box-shadow: 0 0 25px rgba(176, 196, 255, 0.4);
+}
+
+/*** RSVP Section ***
+  
+  Purpose:
+  - Add style rules for your website's RSVP form
+
+  When To Modify:
+  - [ ] Project 6 (REQUIRED FEATURE)
+  - [ ] Project 7 (REQUIRED FEATURE)
+  - [ ] Any time after
+***/
+
+.rsvp-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem; /* space between the two sides */
+}
+
+.rsvp-para {
+  flex: 1;
+  max-width: 50%;
+  text-align: left;
+}
+
+.rsvp-participants {
+  flex: 1;
+  max-width: 50%;
+  text-align: left;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers the form + button horizontally */
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.form-container label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.form-container input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  min-width: 150px;
+}
+
+#rsvp-button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007BFF;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#rsvp-button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+  border-style: solid;
+  border-width: 2px;
+
+  /* Set border-color and background */
+}
+.success {
+  border-style: solid;
+  border-width: 2px;
+
+  /* Set border-color and background */
 }

@@ -34,6 +34,7 @@
       <li><a href="#What-to-expect">About</a></li>
       <li><a href="#Event-Activity-1">Events</a></li>
       <li><a href="#Links-in-Alignment-with-Our-Cause">Our Cause</a></li>
+      <li><button id="theme-button">Toggle Dark Mode</button></li>
     </ul>
   </div>
 
@@ -42,7 +43,7 @@
   <p>Intersectionality is the crossroads of where different social identities meet. 
     For this particular website I want to highlight Black, Queer, Women who have felt alone in their identity and want community. 
     This website will be a connection hub for people with these social identities to meet each other and connect.
-  </p>
+  </p> 
 
   <iframe width="560" height="315" src="https://www.youtube.com/embed/O1islM0ytkE?si=JQ4h7I5Z7-A8t0GS"
     title="YouTube video player" frameborder="0" allowfullscreen></iframe>
@@ -85,9 +86,66 @@
     </article>
   </a>
 
+<!-- rsvp
+
+Purpose:
+- Section for users to sign up for the event
+- Contains a form for users to input their information, 
+and a list of other users who have signed up
+
+When To Modify:
+- [ ] Project 6 (REQUIRED FEATURE) 
+- [ ] Project 6 (STRETCH FEATURE) 
+- [ ] Any time after
+--> 
+<div id="rsvp">
+  <h2>RSVP</h2>
+<p id="rsvp-count">⭐ 3 people have RSVP'd to this event!</p>
+  <div class="rsvp-container">
+    <div class="rsvp-para">
+      <p>
+        We want you here because you belong. If you would like to join in at the intersection, 
+        sign up below and submit your RSVP.
+      </p>
+    </div>
+
+    <!-- Participants section (make sure it has an ID for JS to find) -->
+    <div id="rsvp-participants" class="rsvp-participants">
+      <p>🐚 Destiny from Texas has RSVP'd.</p>
+      <p>🐚 Aaliyah from New York has RSVP'd.</p>
+      <p>🐚 Teresa from Georgia has RSVP'd.</p>
+    </div>
+  </div>
+
+  <!-- Sign RSVP Form -->
+<div class="form-container">
+  <form id="rsvp-form" title="rsvp-form">
+    <label>
+      Name
+      <input id="name-input" type="text" name="name" placeholder="Enter your name">
+    </label>
+
+    <label>
+      Email
+      <input id="email-input" type="email" name="email" placeholder="Enter your email">
+    </label>
+
+    <label>
+      Location
+      <input id="location-input" type="text" name="location" placeholder="Your city or venue">
+    </label>
+  </form>
+
+  <button id="rsvp-button">Submit RSVP</button>
+</div>
+
+
+
   <!-- Footer -->
   <div class="footer">
     <a href="#Intersectionality">Back to Top</a>
   </div>
+  <script src="index.js"></script>
 </body>
 </html>
+
