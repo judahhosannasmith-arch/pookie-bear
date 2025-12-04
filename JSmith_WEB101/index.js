@@ -47,21 +47,14 @@ themeButton.addEventListener("click", toggleDarkMode);
 let rsvpButton = document.getElementById("rsvp-button");
 let count = 3;
 
-function addParticipant() {
-  event.preventDefault();
-
-  const name = document.getElementById("name-input").value.trim();
-  const email = document.getElementById("email-input").value.trim();
-  const location = document.getElementById("location-input").value.trim();
-
+function addParticipant(person) {
   const participantsDiv = document.getElementById("rsvp-participants");
 
-  // Create new RSVP line
   const newParticipant = document.createElement("p");
-  newParticipant.textContent = `🐚 ${name} from ${location} has RSVP'd.`;
+  newParticipant.textContent = `🐚 ${person.name} from ${person.hometown} has RSVP'd.`;
   participantsDiv.appendChild(newParticipant);
 
-  // Update RSVP count text
+  // Update count once
   const countDisplay = document.getElementById("rsvp-count");
   count++;
   countDisplay.textContent = `⭐ ${count} people have RSVP'd to this event!`;
@@ -102,11 +95,24 @@ const validateForm = (event) => {
 
   
   if (!containsErrors) {
-    addParticipant(event);
+
+    // Build the person object (using input order)
+    let person = {
+        name: rsvpInputs[0].value.trim(),
+        email: rsvpInputs[1].value.trim(),
+        hometown: rsvpInputs[2].value.trim()
+    };
+
+    addParticipant(person);
+    toggleModal(person);
+
+
+    // Clear inputs
     for (let i = 0; i < rsvpInputs.length; i++) {
-      rsvpInputs[i].value = "";
+        rsvpInputs[i].value = "";
     }
-  }
+}
+
 };
 
 rsvpButton.addEventListener("click", validateForm);
@@ -124,7 +130,7 @@ rsvpButton.addEventListener("click", validateForm);
 ***/
 
 // Step 1: Select all elements with the class 'revealable'.
-let revealableContainers = TODO;
+let revealableContainers = document.querySelectorAll(".revealable");
 
 // Step 2: Write function to reveal elements when they are in view.
 const reveal = () => {
@@ -132,21 +138,111 @@ const reveal = () => {
         let current = revealableContainers[i];
 
         // Get current height of container and window
-        let windowHeight = TODO;
-        let topOfRevealableContainer = TODO;
+        let windowHeight = window.innerHeight;
+        let topOfRevealableContainer = revealableContainers[i].getBoundingClientRect().top;
         let revealDistance = parseInt(getComputedStyle(current).getPropertyValue('--reveal-distance'), 10);
 
         // If the container is within range, add the 'active' class to reveal
         if (topOfRevealableContainer < windowHeight - revealDistance) {
-            TODO;
+            current.classList.add("active");
         }
         // If the container is not within range, hide it by removing the 'active' class
         else { 
-            TODO;
+            current.classList.remove("active");
         }
     }
 }
 
 // Step 3: Whenever the user scrolls, check if any containers should be revealed
-window.addEventListener(TODO, TODO);
-/*** Success Modal [PLACEHOLDER] [ADDED IN UNIT 9] ***/
+window.addEventListener('scroll', reveal);
+
+/* ===== Fade-In Scroll Observer ===== */
+
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible'); // allows re-trigger
+    }
+  });
+}, {
+  threshold: 0.2 // triggers animation when 20% of element is visible
+});
+
+fadeElements.forEach(el => observer.observe(el));
+
+// Select the reduce motion button
+const reduceMotionButton = document.getElementById("reduce-motion-button");
+
+// Toggle motion on/off
+function reduceMotion() {
+    document.body.classList.toggle("reduce-motion");
+
+    // (Optional) Change button text to show state
+    if (document.body.classList.contains("reduce-motion")) {
+        reduceMotionButton.textContent = "Enable Motion";
+    } else {
+        reduceMotionButton.textContent = "Reduce Motion";
+    }
+}
+
+// Add the event listener
+reduceMotionButton.addEventListener("click", reduceMotion);
+
+
+/*** Modal ***
+  
+  Purpose:
+  - Use this starter code to add a pop-up modal to your website.
+
+  When To Modify:
+  - [ ] Project 9 (REQUIRED FEATURE)
+  - [ ] Project 9 (STRETCH FEATURE)
+  - [ ] Any time after
+***/
+
+const toggleModal = (person) => {
+    
+    // Select the modal and the text content inside
+    const modal = document.getElementById("success-modal");
+    const modalContent = document.getElementById("modal-text");
+
+    // Show the modal by changing its display to flex
+    modal.style.display = "flex";
+
+    // Set the personalized message
+    modalContent.textContent = `Thanks for RSVPing, ${person.name}! We can't wait to see you at the event!! 🎉`;
+
+    // Start rotating the image every 0.5s
+    let intervalId = setInterval(animateImage, 500);
+
+    // Hide modal and stop animation after 5 seconds
+    setTimeout(() => {
+        modal.style.display = "none";
+        clearInterval(intervalId);
+    }, 5000);
+
+
+
+    
+}
+
+// TODO: animation variables and animateImage() function
+let rotateFactor = 0;
+const modalImage = document.getElementById("modal-image");
+
+
+function animateImage() {
+    const modalImage = document.getElementById("modal-image"); // select it here
+    if (!modalImage) return;
+
+    if (rotateFactor === 0) {
+        rotateFactor = -10;
+    } else {
+        rotateFactor = 0;
+    }
+    modalImage.style.transform = `rotate(${rotateFactor}deg)`;
+}

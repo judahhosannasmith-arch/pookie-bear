@@ -35,12 +35,14 @@
       <li><a href="#Event-Activity-1">Events</a></li>
       <li><a href="#Links-in-Alignment-with-Our-Cause">Our Cause</a></li>
       <li><button id="theme-button">Toggle Dark Mode</button></li>
+      <li><button id="reduce-motion-button">Reduce Motion</button></li>
+
     </ul>
   </div>
 
   <!-- About Section -->
-  <h2 id="What-to-expect">How it Pertains to You</h2>
-  <p>Intersectionality is the crossroads of where different social identities meet. 
+  <h2 id="What-to-expect" class="fade-in">How it Pertains to You</h2>
+  <p class="fade-in">Intersectionality is the crossroads of where different social identities meet. 
     For this particular website I want to highlight Black, Queer, Women who have felt alone in their identity and want community. 
     This website will be a connection hub for people with these social identities to meet each other and connect.
   </p> 
@@ -49,38 +51,38 @@
     title="YouTube video player" frameborder="0" allowfullscreen></iframe>
 
   <!-- Event Section -->
-  <h2>Event Schedule</h2>
-  <p>Our goal is to bring people together to form community.
+  <h2 class="fade-in">Event Schedule</h2>
+  <p class="fade-in">Our goal is to bring people together to form community.
     We want to bring Black Queer Women together so we have events planned to do so.
   </p>
 
-  <h3 id="Event-Activity-1">Event Activity 1</h3>
-  <p>For our kickoff event we want to have a paint and sip get together.</p>
-  <img src="./img/download.jpg" alt="Paint and Sip" style="height:25%; width:25%;">
+  <h3 id="Event-Activity-1" class="fade-in">Event Activity 1</h3>
+  <p class="fade-in">For our kickoff event we want to have a paint and sip get together.</p>
+  <img src="./img/download.jpg" alt="Paint and Sip" style="height:25%; width:25%;" class="fade-in">
 
-  <h3>Event Activity 2</h3>
-  <p>Another event we have is our first book club meeting that will be reoccurring depending on members availability.</p>
-  <img src="./img/images.jpg" alt="Book Club" style="height:25%; width:25%;">
+  <h3 class="fade-in">Event Activity 2</h3>
+  <p class="fade-in">Another event we have is our first book club meeting that will be reoccurring depending on members availability.</p>
+  <img src="./img/images.jpg" alt="Book Club" style="height:25%; width:25%;" class="fade-in">
 
   <!-- Our Cause Section -->
   <h2 id="Links-in-Alignment-with-Our-Cause">Links in Alignment with Our Cause</h2>
 
   <a href="https://www.lgbtiqintersect.org.au/learning-modules/intersectionality/" target="_blank">
-    <article>
+    <article class="fade-in">
       <h3>LGBTQ Intersect</h3>
       <p>To understand someone’s experience, we must also understand structures and systems.</p>
     </article>
   </a>
 
   <a href="https://glaad.org/celebrating-black-queer-women-amplifying-voices-and-legacies-in-lgtbq-history/" target="_blank">
-    <article>
+    <article class="fade-in">
       <h3>Celebrating Black Queer Women</h3>
       <p>Amplified voices and stories of just a few Black queer women who have made indelible marks on LGTBQ+ history.</p>
     </article>
   </a>
 
   <a href="https://www.thetrevorproject.org/resources/guide/black-lgbtq-approaching-intersectional-conversations/" target="_blank">
-    <article>
+    <article class="fade-in">
       <h3>The Trevor Project</h3>
       <p>Black & LGBTQ+: Approaching Intersectional Conversations.</p>
     </article>
@@ -99,10 +101,10 @@ When To Modify:
 - [ ] Any time after
 --> 
 <div id="rsvp">
-  <h2>RSVP</h2>
-<p id="rsvp-count">⭐ 3 people have RSVP'd to this event!</p>
+  <h2 class="fade-in">RSVP</h2>
+<p id="rsvp-count" class="fade-in">⭐ 3 people have RSVP'd to this event!</p>
   <div class="rsvp-container">
-    <div class="rsvp-para">
+    <div class="rsvp-para fade-in">
       <p>
         We want you here because you belong. If you would like to join in at the intersection, 
         sign up below and submit your RSVP.
@@ -110,7 +112,7 @@ When To Modify:
     </div>
 
     <!-- Participants section (make sure it has an ID for JS to find) -->
-    <div id="rsvp-participants" class="rsvp-participants">
+    <div id="rsvp-participants" class="rsvp-participants fade-in">
       <p>🐚 Destiny from Texas has RSVP'd.</p>
       <p>🐚 Aaliyah from New York has RSVP'd.</p>
       <p>🐚 Teresa from Georgia has RSVP'd.</p>
@@ -146,6 +148,32 @@ When To Modify:
     <a href="#Intersectionality">Back to Top</a>
   </div>
   <script src="index.js"></script>
+
+<!-- success modal
+
+Purpose:
+- Modal that appears when a user successfully signs up for the event
+- Contains a personalized message and image
+
+When To Modify:
+- [ ] Project 9 (REQUIRED FEATURE)
+- [ ] Project 9 (STRETCH FEATURE) 
+- [ ] Any time after
+--> 
+
+
+<div id="success-modal" class="modal">
+    <div class="modal-container">
+        <div id="modal-item">
+            <p id="modal-text">Thank you for RSVPing! We can’t wait to see you 🎉</p>
+        </div>
+        <div id="modal-item">
+            <img id="modal-image" src="img/lavender.png" alt="Event celebration">
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
 
